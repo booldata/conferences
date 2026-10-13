@@ -1,0 +1,126 @@
+table Customer
+	lineageTag: f4af31a8-83da-48b6-99e7-aa897772f8a7
+
+	column CustomerKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 6e9a0767-8639-4637-bd6e-e70ccc405e20
+		summarizeBy: none
+		sourceColumn: CustomerKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column GivenName
+		dataType: string
+		lineageTag: 8a8233e6-c266-4ff6-a55a-2b3dd3e5e3c5
+		summarizeBy: none
+		sourceColumn: GivenName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Surname
+		dataType: string
+		lineageTag: d6e99ff5-8ef4-4985-bb99-6dca2f4a4ff0
+		summarizeBy: none
+		sourceColumn: Surname
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: 701ca086-c355-4afe-adae-3078357b01f3
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column StateFull
+		dataType: string
+		lineageTag: b905358d-a7ef-4dc1-859f-d2e8ccc0459a
+		summarizeBy: none
+		sourceColumn: StateFull
+
+		annotation SummarizationSetBy = Automatic
+
+	column ZipCode
+		dataType: string
+		lineageTag: da0edb01-00be-48aa-bca8-65f7e0fa8f6e
+		summarizeBy: none
+		sourceColumn: ZipCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column CountryFull
+		dataType: string
+		lineageTag: c6be7615-e54b-43ee-9967-c26516ecf566
+		summarizeBy: none
+		sourceColumn: CountryFull
+
+		annotation SummarizationSetBy = Automatic
+
+	column Occupation-PT
+		dataType: string
+		isHidden
+		lineageTag: 16f7a855-d55e-446b-bb7f-ea9a56e09d60
+		summarizeBy: none
+		sourceColumn: Occupation-PT
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Occupation-FR
+		dataType: string
+		isHidden
+		lineageTag: 6b06ad08-d55d-49df-b7db-b5ff8125f65c
+		summarizeBy: none
+		sourceColumn: Occupation-FR
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Occupation-EN
+		dataType: string
+		isHidden
+		lineageTag: c9f531a2-286c-4ec8-8b97-c299a321d11f
+		summarizeBy: none
+		sourceColumn: Occupation-EN
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Occupation = ```
+			
+			    SWITCH(
+			        USERCULTURE(),
+			        "en-US",[Occupation-EN],
+			        "pt-PT",[Occupation-PT],
+			        "fr-FR",[Occupation-FR],
+			        [Occupation-EN]
+			    )
+			```
+		lineageTag: fa7d9945-ac80-4569-9f69-decdbe6659a7
+		summarizeBy: none
+		expressionContext: userContext
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Customer = m
+		mode: import
+		queryGroup: DIM
+		source =
+				let
+				  Source = Sql.Database("kkwnshtqvnve5nmeeqkvordzqe-j4b5zjuf7lxe3my7u42yzxt3la.datawarehouse.fabric.microsoft.com", "Warehouse"),
+				  #"Navigation 1" = Source{[Schema = "Data", Item = "CustomerSmaller"]}[Data]
+				in
+				  #"Navigation 1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

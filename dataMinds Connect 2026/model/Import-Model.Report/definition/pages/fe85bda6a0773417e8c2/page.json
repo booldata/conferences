@@ -1,0 +1,15 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "fe85bda6a0773417e8c2",
+  "displayName": "Demo 1.2 - Semi Virtual",
+  "displayOption": "FitToPage",
+  "height": 1080,
+  "width": 1920,
+  "visualInteractions": [
+    {
+      "source": "5e0ebcac18593e950c64",
+      "target": "63bb6f30a8c3bbc11d8e",
+      "type": "HighlightFilter"
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+table 'Order Date'
+	lineageTag: 4d10330a-3608-4c96-8616-431194c9a536
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: abf57032-649b-48a1-8775-e582f0728366
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DateKey
+		dataType: string
+		isHidden
+		lineageTag: 7cfa6351-d4c1-496e-8be7-fb23f02c6d9c
+		summarizeBy: none
+		sourceColumn: DateKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkingDay
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b8b9fd27-ae97-4f81-8065-9c0abe706ebb
+		summarizeBy: none
+		sourceColumn: WorkingDay
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkingDayNumber
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b612f6c3-083c-47b6-b7e8-7b9a1bfaa2ae
+		summarizeBy: none
+		sourceColumn: WorkingDayNumber
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: 54b43d62-c06b-4d93-b41d-607f22611c9b
+		summarizeBy: none
+		sourceColumn: MonthNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfWeekNumber
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 34263fdc-643a-4626-a3d2-652f9d968cab
+		summarizeBy: none
+		sourceColumn: DayOfWeekNumber
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfWeek = ```
+			
+			FORMAT ( 
+			    DATE ( 2026, 1, 3 + 'Order Date'[DayOfWeekNumber] )
+			    ,"dddd"
+			    // ,USERCULTURE() 
+			)
+			```
+		lineageTag: 898458f3-9bfa-4118-be70-e4e95aac1cbf
+		summarizeBy: none
+		sortByColumn: DayOfWeekNumber
+
+		relatedColumnDetails
+			groupByColumn: DayOfWeekNumber
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month =
+			
+			FORMAT(
+			    DATE(2026,'Order Date'[MonthNumber],1)
+			    ,"mmmm"
+			    ,USERCULTURE()
+			)
+		lineageTag: 9201414c-09c9-4c5b-a9dc-ac9f91207272
+		summarizeBy: none
+		expressionContext: userContext
+		sortByColumn: MonthNumber
+
+		relatedColumnDetails
+			groupByColumn: MonthNumber
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year = year('Order Date'[Date])
+		formatString: 0
+		lineageTag: d35d1b9d-0d68-46ad-9797-dfd4ca438054
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Order Date' = m
+		mode: import
+		queryGroup: DIM
+		source =
+				let
+				  Source = Sql.Database("kkwnshtqvnve5nmeeqkvordzqe-j4b5zjuf7lxe3my7u42yzxt3la.datawarehouse.fabric.microsoft.com", "Warehouse"),
+				  #"Navigation 1" = Source{[Schema = "Data", Item = "DateSmaller"]}[Data]
+				in
+				  #"Navigation 1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,222 @@
+cultureInfo pt-PT
+	translations
+		model Model
+			table Customer
+				caption: Cliente
+				column CustomerKey
+					caption: Cliente Chave
+				column GivenName
+					caption: Given Nome
+				column Surname
+					caption: Apelido
+				column City
+					caption: Cidade
+				column StateFull
+					caption: Estado Completo
+				column ZipCode
+					caption: Codigo Codigo
+				column CountryFull
+					caption: Pais Completo
+				column Occupation-PT
+					caption: Ocupacao PT
+				column Occupation-FR
+					caption: Ocupacao FR
+				column Occupation-EN
+					caption: Ocupacao EN
+				column Occupation
+					caption: Ocupacao
+			table 'Order Date'
+				caption: Data de Encomenda
+				column Date
+					caption: Data
+				column DateKey
+					caption: Data Chave
+				column WorkingDay
+					caption: Working Dia
+				column WorkingDayNumber
+					caption: Working Dia Numero
+				column MonthNumber
+					caption: Mes Numero
+				column DayOfWeekNumber
+					caption: Dia Of Semana Numero
+				column DayOfWeek
+					caption: Dia Of Semana
+				column Month
+					caption: Mes
+				column Year
+					caption: Ano
+			table Product
+				caption: Produto
+				column ProductKey
+					caption: Produto Chave
+				column ProductCode
+					caption: Produto Codigo
+				column ProductName
+					caption: Produto Nome
+				column Manufacturer
+					caption: Fabricante
+				column Brand
+					caption: Marca
+				column Color
+					caption: Cor
+				column WeightUnit
+					caption: Weight Unidade
+				column CategoryKey
+					caption: Categoria Chave
+				column CategoryName
+					caption: Categoria Nome
+				column SubCategoryKey
+					caption: Sub Categoria Chave
+				column SubCategoryName
+					caption: Sub Categoria Nome
+				column Color-PT
+					caption: Cor PT
+				column Color-FR
+					caption: Cor FR
+				column WeightUnit-PT
+					caption: Weight Unidade PT
+				column WeightUnit-FR
+					caption: Weight Unidade FR
+				column CategoryName-PT
+					caption: Categoria Nome PT
+				column CategoryName-FR
+					caption: Categoria Nome FR
+				column SubCategoryName-PT
+					caption: Sub Categoria Nome PT
+				column SubCategoryName-FR
+					caption: Sub Categoria Nome FR
+				column DepartmentName
+					caption: Departamento Nome
+				column DepartmentName-FR
+					caption: Departamento Nome FR
+				column DepartmentName-PT
+					caption: Departamento Nome PT
+				column DepartmentCode
+					caption: Departamento Codigo
+				column Category
+					caption: Categoria
+				column Department
+					caption: Departamento
+				column SubCategory
+					caption: Subcategoria
+			table 'Product Sensible Information'
+				caption: Produto Sensivel Informacao
+				column UserPrincipalName
+					caption: Utilizador
+				column DepartmentName
+					caption: Departamento Nome
+			table Sales
+				caption: Vendas
+				column OrderKey
+					caption: Encomenda Chave
+				column LineNumber
+					caption: Linha Numero
+				column OrderDate
+					caption: Encomenda Data
+				column DeliveryDate
+					caption: Entrega Data
+				column CustomerKey
+					caption: Cliente Chave
+				column StoreKey
+					caption: Loja Chave
+				column ProductKey
+					caption: Produto Chave
+				column Quantity
+					caption: Quantidade
+				column UnitPrice
+					caption: Unidade Preco
+				column UnitCost
+					caption: Unidade Custo
+				column 'Sales Amount'
+					caption: Vendas Valor
+				column 'Cost Amount'
+					caption: Custo Valor
+			table Store
+				caption: Loja
+				column StoreKey
+					caption: Loja Chave
+				column StoreCode
+					caption: Loja Codigo
+				column CountryCode
+					caption: Pais Codigo
+				column CountryName
+					caption: Pais Nome
+				column State
+					caption: Estado
+				column CountryName-PT
+					caption: Pais Nome PT
+				column CountryName-FR
+					caption: Pais Nome FR
+				column Country
+					caption: Pais
+				column Evaluation
+					caption: Avaliacao
+				column 'Evaluation Value'
+					caption: Avaliacao Valor
+			table 'Store Sensible Information'
+				caption: Loja Sensivel Informacao
+				column StoreKey
+					caption: Loja Chave
+				column Evaluation
+					caption: Avaliacao
+			table 'Delivery Date'
+				caption: Data de Entrega
+				column Date
+					caption: Data
+				column DateKey
+					caption: Data Chave
+				column WorkingDay
+					caption: Working Dia
+				column WorkingDayNumber
+					caption: Working Dia Numero
+				column MonthNumber
+					caption: Mes Numero
+				column DayOfWeekNumber
+					caption: Dia Of Semana Numero
+				column DayOfWeek
+					caption: Dia Of Semana
+				column Month
+					caption: Mes
+				column Year
+					caption: Ano
+			table Indicators
+				caption: Indicadores
+				column Value
+					caption: Valor
+				measure Sales
+					caption: Vendas
+				measure Costs
+					caption: Custos
+				measure Margin
+					caption: Margem
+				measure Culture
+					caption: Cultura
+				measure User
+					caption: Utilizador
+				measure 'Number of Stores'
+					caption: Numero de Lojas
+				measure Info
+					caption: Informacao
+				measure 'Header Order'
+					caption: Cabecalho Encomenda
+				measure 'Header Delivery'
+					caption: Cabecalho Entrega
+				measure 'Number of Categories'
+					caption: Numero de Categorias
+				measure 'Number of Subcategories'
+					caption: Numero de Subcategorias
+				measure 'Sales % Total'
+					caption: Vendas % Total
+				measure 'Sales % Department'
+					caption: Vendas % Departamento
+				measure 'Sales All'
+					caption: Vendas Tudo
+				measure 'Sales Department'
+					caption: Vendas Departamento
+				measure 'Sales Category'
+					caption: Vendas Categoria
+				measure 'Sales % Category'
+					caption: Vendas % Categoria
+				measure 'Sales % Parent'
+					caption: Vendas % Superior
+

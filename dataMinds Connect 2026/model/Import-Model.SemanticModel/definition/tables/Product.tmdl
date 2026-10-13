@@ -1,0 +1,376 @@
+table Product
+	lineageTag: 6311abba-16bc-4fa8-b2fd-ead57d728a8b
+
+	column ProductKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 42f39e63-0170-4c5c-a30d-68312bed6fd4
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductCode
+		dataType: string
+		lineageTag: 97be074f-423e-4f30-b862-56f35c6f761f
+		summarizeBy: none
+		sourceColumn: ProductCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductName
+		dataType: string
+		lineageTag: dd91a81b-0b08-4a0f-896a-3ea06e2793d4
+		summarizeBy: none
+		sourceColumn: ProductName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Manufacturer
+		dataType: string
+		lineageTag: f356319e-b06e-4911-b5ff-69b7dd43b472
+		summarizeBy: none
+		sourceColumn: Manufacturer
+
+		annotation SummarizationSetBy = Automatic
+
+	column Brand
+		dataType: string
+		lineageTag: bbed97b3-97c0-4e17-920b-efdd26cc9466
+		summarizeBy: none
+		sourceColumn: Brand
+
+		annotation SummarizationSetBy = Automatic
+
+	column Color
+		dataType: string
+		lineageTag: c221eeee-5ca6-4dde-890f-e0f192ca2663
+		summarizeBy: none
+		sourceColumn: Color
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeightUnit
+		dataType: string
+		lineageTag: c09efc0e-2f07-4b4b-87b1-97831bc33f76
+		summarizeBy: none
+		sourceColumn: WeightUnit
+
+		annotation SummarizationSetBy = Automatic
+
+	column CategoryKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 59950cdc-6803-4a63-82fa-1ca81b343901
+		summarizeBy: none
+		sourceColumn: CategoryKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CategoryName
+		dataType: string
+		isHidden
+		lineageTag: 638aec23-2365-457c-982b-f6b51f555f5e
+		summarizeBy: none
+		sourceColumn: CategoryName
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SubCategoryKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1a266201-7e39-417d-99b7-c0aa9fc90ade
+		summarizeBy: none
+		sourceColumn: SubCategoryKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SubCategoryName
+		dataType: string
+		isHidden
+		lineageTag: a153032a-474d-46a6-a0ff-2106144a462b
+		summarizeBy: none
+		sourceColumn: SubCategoryName
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Color-PT
+		dataType: string
+		lineageTag: 45a741b2-300f-4d73-9cd9-3cc4a1cd4ff9
+		summarizeBy: none
+		sourceColumn: Color-PT
+
+		annotation SummarizationSetBy = Automatic
+
+	column Color-FR
+		dataType: string
+		lineageTag: 38b4b2e8-ca37-445f-88dd-a16f3eab2366
+		summarizeBy: none
+		sourceColumn: Color-FR
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeightUnit-PT
+		dataType: string
+		lineageTag: 43ee1189-7bbc-4970-99fa-c6d71a30749f
+		summarizeBy: none
+		sourceColumn: WeightUnit-PT
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeightUnit-FR
+		dataType: string
+		lineageTag: 980da53c-04be-427b-a284-2afcbbc8a3ca
+		summarizeBy: none
+		sourceColumn: WeightUnit-FR
+
+		annotation SummarizationSetBy = Automatic
+
+	column CategoryName-PT
+		dataType: string
+		isHidden
+		lineageTag: cf0372db-5995-4803-bfd1-19754c6a302e
+		summarizeBy: none
+		sourceColumn: CategoryName-PT
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CategoryName-FR
+		dataType: string
+		isHidden
+		lineageTag: 20876f07-271c-4b48-80b7-c60f32278e67
+		summarizeBy: none
+		sourceColumn: CategoryName-FR
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SubCategoryName-PT
+		dataType: string
+		isHidden
+		lineageTag: 991562b9-242c-48c2-8093-cc2b57ef88fb
+		summarizeBy: none
+		sourceColumn: SubCategoryName-PT
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SubCategoryName-FR
+		dataType: string
+		isHidden
+		lineageTag: 2c772250-9e78-4911-abc6-d9eadbc40bdd
+		summarizeBy: none
+		sourceColumn: SubCategoryName-FR
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DepartmentName
+		dataType: string
+		isHidden
+		lineageTag: 19ee6e71-a984-4750-b198-be231ef76697
+		summarizeBy: none
+		sourceColumn: DepartmentName
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DepartmentName-FR
+		dataType: string
+		isHidden
+		lineageTag: b45bf958-0385-41c3-899f-5a8f047ee8a8
+		summarizeBy: none
+		sourceColumn: DepartmentName-FR
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DepartmentName-PT
+		dataType: string
+		isHidden
+		lineageTag: 5e6f8d70-a544-41f4-a488-2c648942e686
+		summarizeBy: none
+		sourceColumn: DepartmentName-PT
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DepartmentCode
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: da030ce2-ad1a-4163-9307-fdc4ffeaf73d
+		summarizeBy: none
+		sourceColumn: DepartmentCode
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category = ```
+			
+			VAR _custom = CUSTOMDATA()
+			VAR _upn = IF ( _custom = BLANK() || _custom = "", USERPRINCIPALNAME(), _custom )
+			VAR _availableInfo = 
+			    LOOKUPVALUE(
+			      'Product Sensible Information'[DepartmentName]
+			      ,'Product Sensible Information'[UserPrincipalName]
+			      ,_upn
+			    )
+			RETURN
+			    IF(
+			        ISBLANK(_availableInfo) || PATHCONTAINS(_availableInfo, [DepartmentName]),
+			        SWITCH(
+			            USERCULTURE(),
+			            "en-US",[CategoryName],
+			            "fr-FR",[CategoryName-FR],
+			            "pt-PT",[CategoryName-PT],
+			            [CategoryName]
+			        ),
+			        SWITCH(
+			            USERCULTURE(),
+			            "en-US","Others",
+			            "fr-FR","Autres",
+			            "pt-PT","Outros",
+			            "Others"
+			        )    
+			    )
+			```
+		lineageTag: 70390ffb-0810-4433-9cf2-1f67790f5cca
+		summarizeBy: none
+		expressionContext: userContext
+
+		annotation SummarizationSetBy = Automatic
+
+	column Department = ```
+			
+			VAR _custom = CUSTOMDATA()
+			VAR _upn = IF ( _custom = BLANK() || _custom = "", USERPRINCIPALNAME(), _custom )
+			VAR _availableInfo = 
+			    LOOKUPVALUE(
+			      'Product Sensible Information'[DepartmentName]
+			      ,'Product Sensible Information'[UserPrincipalName]
+			      ,_upn
+			    )
+			RETURN
+			    IF(
+			        ISBLANK(_availableInfo) || PATHCONTAINS(_availableInfo, [DepartmentName]),
+			        SWITCH(
+			            USERCULTURE(),
+			            "en-US", [DepartmentName],
+			            "fr-FR", [DepartmentName-FR],
+			            "pt-PT", [DepartmentName-PT],
+			            [DepartmentName]
+			        ),
+			        SWITCH(
+			            USERCULTURE(),
+			            "en-US", "Others",
+			            "fr-FR", "Autres",
+			            "pt-PT", "Outros",
+			            "Others"
+			        )
+			    )
+			```
+		lineageTag: d395568c-5cec-428d-9af2-5a98b9018fe4
+		summarizeBy: none
+		expressionContext: userContext
+		sortByColumn: DepartmentOrderCode
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column SubCategory = ```
+			
+			VAR _custom = CUSTOMDATA()
+			VAR _upn = IF ( _custom = BLANK() || _custom = "", USERPRINCIPALNAME(), _custom )
+			VAR _availableInfo = 
+			    LOOKUPVALUE(
+			      'Product Sensible Information'[DepartmentName]
+			      ,'Product Sensible Information'[UserPrincipalName]
+			      ,_upn
+			    )
+			RETURN
+			    IF(
+			        ISBLANK(_availableInfo) || PATHCONTAINS(_availableInfo, [DepartmentName]),
+			        SWITCH(
+			            USERCULTURE(),
+			            "en-US",[SubCategoryName],
+			            "fr-FR",[SubCategoryName-FR],
+			            "pt-PT",[SubCategoryName-PT],
+			            [SubCategoryName]
+			        ),
+			        SWITCH(
+			            USERCULTURE(),
+			            "en-US","Others",
+			            "fr-FR","Autres",
+			            "pt-PT","Outros",
+			            "Others"
+			        )    
+			    )
+			```
+		lineageTag: 0bb2b332-8db1-477f-aaa0-af76ab1d8e89
+		summarizeBy: none
+		expressionContext: userContext
+
+		annotation SummarizationSetBy = Automatic
+
+	column DepartmentOrderCode = ```
+			
+			VAR _custom = CUSTOMDATA()
+			VAR _upn = IF ( _custom = BLANK() || _custom = "", USERPRINCIPALNAME(), _custom )
+			VAR _availableInfo = 
+			    LOOKUPVALUE(
+			      'Product Sensible Information'[DepartmentName]
+			      ,'Product Sensible Information'[UserPrincipalName]
+			      ,_upn
+			    )
+			RETURN
+			    IF(
+			        ISBLANK(_availableInfo) || PATHCONTAINS(_availableInfo, [DepartmentName]),
+			        [DepartmentCode],
+			        999999
+			    )
+			```
+		formatString: 0
+		lineageTag: 063ca4d9-5172-43af-a753-395c108df4a4
+		summarizeBy: none
+		expressionContext: userContext
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Product = m
+		mode: import
+		queryGroup: DIM
+		source =
+				let
+				  Source = Sql.Database("kkwnshtqvnve5nmeeqkvordzqe-j4b5zjuf7lxe3my7u42yzxt3la.datawarehouse.fabric.microsoft.com", "Warehouse"),
+				  #"Navigation 1" = Source{[Schema = "Data", Item = "Product"]}[Data]
+				in
+				  #"Navigation 1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

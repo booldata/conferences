@@ -1,0 +1,162 @@
+table Sales
+	isHidden
+	lineageTag: 76cc1b9c-002a-4c0b-9ec8-3b6649dfe655
+
+	column OrderKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 9c04c866-7171-428a-a0e4-3a60080deeb5
+		summarizeBy: count
+		sourceColumn: OrderKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column LineNumber
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: dfafa3bf-914c-47e5-a2d2-5fae67a3d961
+		summarizeBy: sum
+		sourceColumn: LineNumber
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderDate
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: 6d219344-446a-49a6-aec1-f73d5222e18a
+		summarizeBy: none
+		sourceColumn: OrderDate
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DeliveryDate
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: edbffe8e-f8a8-45ce-b38c-7615cf545297
+		summarizeBy: none
+		sourceColumn: DeliveryDate
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CustomerKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 5e22107a-ba4f-4cb6-975f-0fb04d00fe7a
+		summarizeBy: none
+		sourceColumn: CustomerKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column StoreKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1a165ea2-cdbe-4cd5-9e02-fed1dd545174
+		summarizeBy: none
+		sourceColumn: StoreKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: fa139a0e-b0c0-404e-835d-994911593573
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 29d93ed2-d3cd-43ac-b10b-30e637912ab0
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnitPrice
+		dataType: double
+		isHidden
+		lineageTag: 917c6c24-005a-4546-9f0c-d4afb1325920
+		summarizeBy: sum
+		sourceColumn: UnitPrice
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UnitCost
+		dataType: double
+		isHidden
+		lineageTag: af8ba230-18e2-444b-9ca7-b653baad766c
+		summarizeBy: sum
+		sourceColumn: UnitCost
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Sales Amount' = [Quantity]*[UnitPrice]
+		lineageTag: 8f2bc0fd-71d0-48e2-8e76-2daa0e99c055
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Cost Amount' = [Quantity]*[UnitCost]
+		lineageTag: 2248a584-870b-4eb6-9066-280342144350
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Sales = m
+		mode: import
+		queryGroup: FCT
+		source =
+				let
+				  Source = Sql.Database("kkwnshtqvnve5nmeeqkvordzqe-j4b5zjuf7lxe3my7u42yzxt3la.datawarehouse.fabric.microsoft.com", "Warehouse"),
+				  #"Navigation 1" = Source{[Schema = "Data", Item = "SalesSmaller"]}[Data]
+				in
+				  #"Navigation 1"
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

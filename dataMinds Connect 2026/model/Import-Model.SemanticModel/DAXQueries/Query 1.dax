@@ -1,0 +1,3 @@
+EVALUATE
+SUMMARIZECOLUMNS('Delivery Date'[Year], "Sales", [Sales])
+ORDER BY 'Delivery Date'[Year]

@@ -1,0 +1,132 @@
+table Store
+	lineageTag: 39da51c7-4487-4cee-acf4-1633450ce75e
+
+	column StoreKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: eb262c90-f1c6-478c-b96c-001486899830
+		summarizeBy: none
+		sourceColumn: StoreKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column StoreCode
+		dataType: int64
+		formatString: 0
+		lineageTag: 4761b5da-3808-4b5e-90e4-13c327743433
+		summarizeBy: none
+		sourceColumn: StoreCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column CountryCode
+		dataType: string
+		lineageTag: 7b59a41e-91a8-462f-96e8-8c1185068302
+		summarizeBy: none
+		sourceColumn: CountryCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column CountryName
+		dataType: string
+		isHidden
+		lineageTag: 994f3794-4a85-4190-a471-2ed5d63ddb12
+		summarizeBy: none
+		sourceColumn: CountryName
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		dataType: string
+		lineageTag: dcba2354-a2c4-46f9-8c9c-9ecb6e7b16b9
+		summarizeBy: none
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	column CountryName-PT
+		dataType: string
+		isHidden
+		lineageTag: 1e6432f1-f3d1-4516-9542-ee99e672b139
+		summarizeBy: none
+		sourceColumn: CountryName-PT
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CountryName-FR
+		dataType: string
+		isHidden
+		lineageTag: e4889b4d-96f6-4edc-a773-be8426b48a16
+		summarizeBy: none
+		sourceColumn: CountryName-FR
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country =
+			
+			SWITCH(
+			    USERCULTURE(),
+			    "en-US",[CountryName],
+			    "pt-PT",[CountryName-PT],
+			    "fr-FR",[CountryName-FR],
+			    [CountryName]
+			)
+		lineageTag: 657f0628-84fb-48dd-a756-da13b786808c
+		summarizeBy: none
+		expressionContext: userContext
+
+		annotation SummarizationSetBy = Automatic
+
+	column Evaluation =
+			
+			REPT(
+			    "★",
+			    LOOKUPVALUE(
+			      'Store Sensible Information'[Evaluation]
+			      ,'Store Sensible Information'[StoreKey]
+			      ,Store[StoreKey]
+			    )
+			)
+		lineageTag: 75bbdc98-162a-41d5-9060-7d3d99200cbe
+		summarizeBy: none
+		expressionContext: userContext
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Evaluation Value' =
+			
+			LOOKUPVALUE(
+			    'Store Sensible Information'[Evaluation]
+			    ,'Store Sensible Information'[StoreKey]
+			    ,Store[StoreKey]
+			)
+		formatString: 0
+		lineageTag: 3870d0dd-d6c5-4196-9b3f-e560ebde729a
+		summarizeBy: none
+		expressionContext: userContext
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Store = m
+		mode: import
+		queryGroup: DIM
+		source =
+				let
+				  Source = Sql.Database("kkwnshtqvnve5nmeeqkvordzqe-j4b5zjuf7lxe3my7u42yzxt3la.datawarehouse.fabric.microsoft.com", "Warehouse"),
+				  #"Navigation 1" = Source{[Schema = "Data", Item = "Store"]}[Data]
+				in
+				  #"Navigation 1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

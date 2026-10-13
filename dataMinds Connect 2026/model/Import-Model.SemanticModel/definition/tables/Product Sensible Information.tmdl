@@ -1,0 +1,42 @@
+table 'Product Sensible Information'
+	isHidden
+	lineageTag: 6b9a400a-431c-4567-826c-d4dbb05fc4f6
+
+	column UserPrincipalName
+		dataType: string
+		isHidden
+		lineageTag: 4da8776e-a277-4cd3-a6bd-5ef337ad7fc1
+		summarizeBy: none
+		sourceColumn: UserPrincipalName
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DepartmentName
+		dataType: string
+		isHidden
+		lineageTag: 2073c8c8-d4e8-44aa-ad6c-434112c545e2
+		summarizeBy: none
+		sourceColumn: DepartmentName
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Product Sensible Information' = m
+		mode: import
+		queryGroup: SEC
+		source =
+				let
+				  Source = Sql.Database("kkwnshtqvnve5nmeeqkvordzqe-j4b5zjuf7lxe3my7u42yzxt3la.datawarehouse.fabric.microsoft.com", "Warehouse"),
+				  #"Navigation 1" = Source{[Schema = "Data", Item = "ProductSensibleInformation"]}[Data]
+				in
+				  #"Navigation 1"
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

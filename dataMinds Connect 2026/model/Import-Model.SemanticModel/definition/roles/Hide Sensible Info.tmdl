@@ -1,0 +1,7 @@
+role 'Hide Sensible Info'
+	modelPermission: read
+
+	tablePermission 'Store Sensible Information' = FALSE()
+
+	annotation PBI_Id = cd85f58afb9146eab96839a0bcf01db4
+

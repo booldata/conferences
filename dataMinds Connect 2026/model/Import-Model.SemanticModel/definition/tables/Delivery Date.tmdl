@@ -1,0 +1,129 @@
+table 'Delivery Date'
+	lineageTag: 614fc458-6d1b-451f-b05b-b7c2fe0230ae
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 90bb494d-68b0-467c-a4e2-aefe0d533367
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DateKey
+		dataType: string
+		isHidden
+		lineageTag: d1e18c79-07c9-4a18-9f45-03716c77d4a6
+		summarizeBy: none
+		sourceColumn: DateKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkingDay
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 164d815a-4fec-4123-a455-049e1d9e1d3a
+		summarizeBy: none
+		sourceColumn: WorkingDay
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkingDayNumber
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 05ca6b8f-9f97-4a37-82fc-0aa09ac266b7
+		summarizeBy: none
+		sourceColumn: WorkingDayNumber
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: d3fd7fb7-95e4-492c-9d64-05cf725e3d2e
+		summarizeBy: none
+		sourceColumn: MonthNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfWeekNumber
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 749c1917-0e70-4810-a4e7-a72895079f2d
+		summarizeBy: none
+		sourceColumn: DayOfWeekNumber
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfWeek = ```
+			
+			FORMAT ( 
+			    DATE ( 2026, 1, 3 + 'Delivery Date'[DayOfWeekNumber] ) 
+			    ,"dddd"
+			    --,USERCULTURE() 
+			)
+			```
+		lineageTag: bee31f21-ec2c-486e-913b-fed1cf284d7c
+		summarizeBy: none
+		expressionContext: userContext
+		sortByColumn: DayOfWeekNumber
+
+		relatedColumnDetails
+			groupByColumn: DayOfWeekNumber
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month =
+			
+			FORMAT(
+			    DATE(2026,
+			         'Delivery Date'[MonthNumber]
+			         ,1)
+			    ,"mmmm"
+			    --,USERCULTURE()
+			)
+		lineageTag: f1929225-7538-4b5f-82b8-a093f32a3c59
+		summarizeBy: none
+		expressionContext: userContext
+		sortByColumn: MonthNumber
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year = year('Delivery Date'[Date])
+		formatString: 0
+		lineageTag: 104eeb02-6aec-4629-879e-f2d3fb83e350
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Delivery Date' = m
+		mode: import
+		queryGroup: DIM
+		source =
+				let
+				  Source = Sql.Database("kkwnshtqvnve5nmeeqkvordzqe-j4b5zjuf7lxe3my7u42yzxt3la.datawarehouse.fabric.microsoft.com", "Warehouse"),
+				  #"Navigation 1" = Source{[Schema = "Data", Item = "DateSmaller"]}[Data]
+				in
+				  #"Navigation 1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,167 @@
+table Indicators
+	lineageTag: af5cdab8-ff84-4be5-8cca-a920e85cc40d
+
+	measure Sales = ```
+			
+			    SUM(Sales[Sales Amount])
+			```
+		formatString: #,0
+		displayFolder: Sales Report
+		lineageTag: 874c8a98-b32a-4923-b481-1a8faffde859
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure Costs = ```
+			
+			    SUM(Sales[Cost Amount])
+			```
+		displayFolder: Sales Report
+		lineageTag: 6dac3b46-cd6e-4545-b1cf-a5fbf614c685
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Margin = ```
+			
+			    [Sales]-[Costs]
+			```
+		displayFolder: Sales Report
+		lineageTag: 345ccbb7-4ef3-4625-a8c3-ea704edef62d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Culture = ```
+			USERCULTURE() 
+			```
+		displayFolder: Reporting Metadata
+		lineageTag: 6f7a909c-e630-4477-9df8-e51d3ec986e5
+
+	measure User =
+			VAR _custom = CUSTOMDATA()
+			RETURN IF ( _custom = BLANK() || _custom = "", USERPRINCIPALNAME(), _custom )
+		displayFolder: Reporting Metadata
+		lineageTag: d7a4bfd1-fe7d-490b-8e70-f27775d338c7
+
+	measure 'Number of Stores' = COUNTROWS('Store')
+		formatString: 0
+		displayFolder: Sales Report
+		lineageTag: 2345a05f-1027-4a6e-8b58-53b400847d8c
+
+	measure Info = [User] &" || "& [Culture]
+		displayFolder: Reporting Metadata
+		lineageTag: f427382a-2b0f-44b7-8b57-63de639c69d4
+
+	measure 'Header Order' =
+			
+			SWITCH(
+			    [Culture],
+			    "en-US","ORDER DATE",
+			    "pt-PT","DATA DE ENCOMENDA",
+			    "fr-FR","COMMANDE DATE",
+			    "ORDER DATE"
+			)
+		displayFolder: Reporting Metadata
+		lineageTag: 4f10331b-c281-42a6-9501-fb69e61b2050
+
+	measure 'Header Delivery' =
+			
+			SWITCH(
+			    [Culture],
+			    "en-US","DELIVERY DATE",
+			    "pt-PT","DATA DE ENTREGA",
+			    "fr-FR","LIVRAISON DATE",
+			    "DELIVERY DATE"
+			)
+		displayFolder: Reporting Metadata
+		lineageTag: e41fbc39-150b-454e-8cd4-cd614a1a8ad7
+
+	measure 'Number of Categories' = DISTINCTCOUNT('Product'[Category])
+		formatString: 0
+		displayFolder: Sales Report
+		lineageTag: 04ba89c6-cbdb-4ad3-b0df-c02de2a3ba8d
+
+	measure 'Number of Subcategories' = DISTINCTCOUNT('Product'[SubCategory])
+		formatString: 0
+		displayFolder: Sales Report
+		lineageTag: ce273dde-ef45-4989-ba8e-bef31c9901d0
+
+	measure 'Sales % Total' = ```
+			
+			    DIVIDE(
+			        [Sales],
+			        [Sales All]
+			        ,0)
+			```
+		formatString: 0%;-0%;0%
+		displayFolder: Sales Report
+		lineageTag: 783c3e19-f64e-47f4-b7e2-afa50082a600
+
+	measure 'Sales % Department' =
+			
+			DIVIDE(
+			    [Sales],
+			    [Sales Department],
+			    0
+			)
+		formatString: 0%;-0%;0%
+		displayFolder: Sales Report
+		lineageTag: c077d33b-dba9-43e6-a1c9-e090e7f061c5
+
+	measure 'Sales All' = CALCULATE ( [Sales], ALLSELECTED () )
+		displayFolder: Sales Report
+		lineageTag: 0031db57-dfae-4689-aa24-5b3df200cc90
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales Department' = CALCULATE ( [Sales], ALLSELECTED (), VALUES ( 'Product'[Department] ) )
+		displayFolder: Sales Report
+		lineageTag: 5cbc8f01-31a0-478b-8178-86869006ef2a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales Category' = CALCULATE ( [Sales], ALLSELECTED (), VALUES ( 'Product'[Category] ) )
+		displayFolder: Sales Report
+		lineageTag: cbc1fdbc-d359-4f3f-87d9-bc448feda949
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales % Category' =
+			
+			DIVIDE(
+			    [Sales]
+			    ,[Sales Category]
+			    ,0
+			    )
+		formatString: 0%;-0%;0%
+		displayFolder: Sales Report
+		lineageTag: 94305e1c-9404-4802-a697-15cf3c08bd80
+
+	measure 'Sales % Parent' =
+			
+			SWITCH (
+			    TRUE (),
+			    ISINSCOPE ( 'Product'[Subcategory] ), DIVIDE ( [Sales], [Sales Category] ),
+			    ISINSCOPE ( 'Product'[Category] ),    DIVIDE ( [Sales], [Sales Department] ),
+			    ISINSCOPE ( 'Product'[Department] ),    DIVIDE ( [Sales], [Sales All] )
+			)
+		formatString: 0%;-0%;0%
+		displayFolder: Sales Report
+		lineageTag: e2fd6078-e955-473f-9f16-1bae3383054b
+
+	column Value
+		isHidden
+		formatString: 0
+		lineageTag: a51cc6ac-d437-4be6-a73c-fb6a1f806beb
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Indicators = calculated
+		mode: import
+		source = ```
+				{{BLANK()}} 
+				```
+
+	annotation PBI_Id = b1d4ebf2e6824587af80533ff00a93a4
+

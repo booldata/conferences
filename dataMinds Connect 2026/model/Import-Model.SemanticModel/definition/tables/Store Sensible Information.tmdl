@@ -1,0 +1,44 @@
+table 'Store Sensible Information'
+	isHidden
+	lineageTag: 10512ed5-6b32-4365-b874-68854885205b
+
+	column StoreKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 12a6ed9e-d605-4af3-abdf-eec8f9808a5c
+		summarizeBy: count
+		sourceColumn: StoreKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Evaluation
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f8ed6f83-e08b-4913-ac2d-16fdcbdb1e79
+		summarizeBy: sum
+		sourceColumn: Evaluation
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Store Sensible Information' = m
+		mode: import
+		queryGroup: SEC
+		source =
+				let
+				  Source = Sql.Database("kkwnshtqvnve5nmeeqkvordzqe-j4b5zjuf7lxe3my7u42yzxt3la.datawarehouse.fabric.microsoft.com", "Warehouse"),
+				  #"Navigation 1" = Source{[Schema = "Data", Item = "StoreSensibleInformation"]}[Data]
+				in
+				  #"Navigation 1"
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
